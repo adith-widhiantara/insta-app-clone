@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Controllers;
 
+use App\Models\Post;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -18,14 +19,18 @@ class PostControllerTest extends TestCase
 
         $existingFile = UploadedFile::fake()->image('existing.jpg');
 
-        $token = $this->getToken();
+        $user = $this->createUser();
+
+        $token = $user->createToken('test')->plainTextToken;
+
+        $text = fake()->text();
 
         $response = $this
             ->withHeaders([
                 'Authorization' => 'Bearer '.$token,
             ])->postJson('api/post', [
                 'image' => $existingFile,
-                'caption' => fake()->text(),
+                'caption' => $text,
             ]);
 
         $response
@@ -34,5 +39,10 @@ class PostControllerTest extends TestCase
         $this->assertStringContainsString('http://', $response->json('data.image_url'));
 
         Storage::disk('public')->assertExists('post/'.$existingFile->hashName());
+
+        $this->assertDatabaseHas((new Post)->getTable(), [
+            'user_id' => $user->id,
+            'caption' => $text,
+        ]);
     }
 }
