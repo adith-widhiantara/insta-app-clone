@@ -36,4 +36,17 @@ class ProfileControllerTest extends TestCase
 
         $this->assertEquals($name, $response->json('data.user.name'));
     }
+
+    public function test_failed_get_my_profile(): void
+    {
+        $response = $this->getJson('api/profile/my-profile');
+
+        $response
+            ->assertStatus(Response::HTTP_UNAUTHORIZED)
+            ->assertJsonStructure([
+                'message',
+            ]);
+
+        $this->assertEquals('Unauthenticated.', $response->json('message'));
+    }
 }
