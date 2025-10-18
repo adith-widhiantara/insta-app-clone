@@ -36,4 +36,21 @@ class AuthenticationControllerTest extends TestCase
                 ]
             ]);
     }
+
+    public function test_failed_login_wrong_password(): void
+    {
+        $user = $this->createUser([
+            'password' => 'password'
+        ]);
+
+        $response = $this->postJson('api/auth/login', [
+            'email' => $user->email,
+            'password' => 'other-password',
+        ]);
+
+        $response
+            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+
+        $this->assertEquals('Wrong password.', $response->json('message'));
+    }
 }
