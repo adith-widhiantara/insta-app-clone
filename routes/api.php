@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Spatie\RouteDiscovery\Discovery\Discover;
+use App\Http\Controllers\AuthenticationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:sanctum')
+    ->group(function () {
+        Discover::controllers()->in(app_path('Http/Controllers/Api'));
+    });
+
+Route::post('auth/login', [AuthenticationController::class, 'login']);
