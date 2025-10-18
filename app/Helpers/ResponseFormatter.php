@@ -12,8 +12,7 @@ class ResponseFormatter
         $message = 'Success',
         $status = 'success',
         $code = ResponseAlias::HTTP_OK
-    ): JsonResponse
-    {
+    ): JsonResponse {
         return response()->json([
             'status' => $status,
             'message' => $message,
@@ -26,8 +25,7 @@ class ResponseFormatter
         $message = 'Error',
         $status = 'error',
         $code = ResponseAlias::HTTP_INTERNAL_SERVER_ERROR
-    ): JsonResponse
-    {
+    ): JsonResponse {
         return response()->json([
             'status' => $status,
             'message' => $message,

@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Controllers;
 
-use Tests\TestCase;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class AuthenticationControllerTest extends TestCase
 {
@@ -17,7 +17,7 @@ class AuthenticationControllerTest extends TestCase
         $password = 'password';
 
         $user = $this->createUser([
-            'password' => $password
+            'password' => $password,
         ]);
 
         $response = $this->postJson('api/auth/login', [
@@ -33,16 +33,16 @@ class AuthenticationControllerTest extends TestCase
                 'data' => [
                     'token',
                     'user' => [
-                        'email'
-                    ]
-                ]
+                        'email',
+                    ],
+                ],
             ]);
     }
 
     public function test_failed_login_wrong_password(): void
     {
         $user = $this->createUser([
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         $response = $this->postJson('api/auth/login', [
@@ -62,7 +62,7 @@ class AuthenticationControllerTest extends TestCase
             'name' => 'Test Name',
             'email' => 'email@name.com',
             'phone' => 'phonephone',
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         $response
@@ -74,16 +74,16 @@ class AuthenticationControllerTest extends TestCase
                     'token',
                     'user' => [
                         'name',
-                        'password'
-                    ]
-                ]
+                        'password',
+                    ],
+                ],
             ]);
 
         $this->assertNotNull($response->json('data.token'));
 
         $this->assertTrue(Hash::check('password', $response->json('data.user.password')));
 
-        $this->assertDatabaseHas((new User())->getTable(), [
+        $this->assertDatabaseHas((new User)->getTable(), [
             'id' => $response->json('data.user.id'),
             'name' => $response->json('data.user.name'),
         ]);
@@ -94,20 +94,20 @@ class AuthenticationControllerTest extends TestCase
         $email = 'email@name.com';
 
         $this->createUser([
-            'email' => $email
+            'email' => $email,
         ]);
 
         $response = $this->postJson('api/auth/register', [
             'name' => 'Test Name',
             'email' => $email,
             'phone' => 'phonephone',
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         $response
             ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
             ->assertJsonValidationErrors([
-                'email'
+                'email',
             ]);
     }
 
@@ -116,20 +116,20 @@ class AuthenticationControllerTest extends TestCase
         $phone = 'phonephone';
 
         $this->createUser([
-            'phone' => $phone
+            'phone' => $phone,
         ]);
 
         $response = $this->postJson('api/auth/register', [
             'name' => 'Test Name',
             'email' => 'email@name.com',
             'phone' => $phone,
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         $response
             ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
             ->assertJsonValidationErrors([
-                'phone'
+                'phone',
             ]);
     }
 }

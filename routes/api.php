@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
 use Illuminate\Support\Facades\Route;
 use Spatie\RouteDiscovery\Discovery\Discover;
-use App\Http\Controllers\AuthenticationController;
 
 /*
 |--------------------------------------------------------------------------

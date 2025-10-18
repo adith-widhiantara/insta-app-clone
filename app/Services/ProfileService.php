@@ -11,7 +11,7 @@ class ProfileService extends Service
         $user = $request->user();
 
         return [
-            'user' => $user
+            'user' => $user,
         ];
     }
 }

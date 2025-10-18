@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
-use Exception;
-use App\Models\User;
-use Laravolt\Crud\CrudModel;
-use Illuminate\Http\Request;
-use Laravolt\Crud\CrudService;
-use App\Services\ProfileService;
-use Illuminate\Http\JsonResponse;
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\BaseController;
+use App\Models\User;
+use App\Services\ProfileService;
+use Exception;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Laravolt\Crud\CrudModel;
+use Laravolt\Crud\CrudService;
 use Spatie\RouteDiscovery\Attributes\Route;
 
 class ProfileController extends BaseController
@@ -36,6 +36,6 @@ class ProfileController extends BaseController
 
     public function model(): CrudModel
     {
-        return new User();
+        return new User;
     }
 }

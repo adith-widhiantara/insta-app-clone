@@ -7,6 +7,7 @@ use Laravolt\Crud\CrudRequest;
 abstract class Request extends CrudRequest
 {
     protected string $required = 'required';
+
     protected string $string = 'string';
 
     /**

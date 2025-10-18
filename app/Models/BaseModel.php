@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-use Laravolt\Crud\CrudModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravolt\Crud\CrudModel;
 
 abstract class BaseModel extends CrudModel
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

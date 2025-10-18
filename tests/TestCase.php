@@ -2,10 +2,10 @@
 
 namespace Tests;
 
-use Mockery;
 use App\Models\User;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Facades\Http;
+use Mockery;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -13,14 +13,14 @@ abstract class TestCase extends BaseTestCase
 
     public $seed = true;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
         Http::preventStrayRequests();
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         Mockery::close();
         parent::tearDown();
@@ -29,6 +29,7 @@ abstract class TestCase extends BaseTestCase
     protected function getToken(array $attributes = []): string
     {
         $user = $this->createUser($attributes);
+
         return $user->createToken('TestToken')->plainTextToken;
     }
 

@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Controllers;
 
-use Tests\TestCase;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Symfony\Component\HttpFoundation\Response;
+use Tests\TestCase;
 
 class ProfileControllerTest extends TestCase
 {
@@ -18,11 +18,11 @@ class ProfileControllerTest extends TestCase
         $name = 'Test Name';
 
         $token = $this->getToken([
-            'name' => $name
+            'name' => $name,
         ]);
 
         $response = $this->withHeaders([
-            'Authorization' => 'Bearer ' . $token,
+            'Authorization' => 'Bearer '.$token,
         ])->getJson('api/profile/my-profile');
 
         $response
@@ -32,9 +32,9 @@ class ProfileControllerTest extends TestCase
                 'message',
                 'data' => [
                     'user' => [
-                        'name'
-                    ]
-                ]
+                        'name',
+                    ],
+                ],
             ]);
 
         $this->assertEquals($name, $response->json('data.user.name'));

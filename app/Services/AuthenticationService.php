@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\User;
 use App\Http\Requests\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -19,7 +19,7 @@ class AuthenticationService extends Service
             ->where('email', $request->input('email'))
             ->firstOrFail();
 
-        if (!Hash::check($request->input('password'), $user->password)) {
+        if (! Hash::check($request->input('password'), $user->password)) {
             throw ValidationException::withMessages(
                 ['password' => 'Wrong password.']
             );
@@ -32,7 +32,7 @@ class AuthenticationService extends Service
     {
         return [
             'token' => $user->createToken('token')->plainTextToken,
-            'user' => $user->toArray()
+            'user' => $user->toArray(),
         ];
     }
 

@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\Authentication;
 
-use App\Models\User;
 use App\Http\Requests\Request;
-use Illuminate\Validation\Rule;
+use App\Models\User;
 use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Validation\Rule;
 
 final class LoginRequest extends Request
 {
@@ -17,8 +17,8 @@ final class LoginRequest extends Request
     public function rules(): array
     {
         return [
-            'email' => [$this->required, Rule::exists((new User())->getTable(), 'email')],
-            'password' => [$this->required]
+            'email' => [$this->required, Rule::exists((new User)->getTable(), 'email')],
+            'password' => [$this->required],
         ];
     }
 }

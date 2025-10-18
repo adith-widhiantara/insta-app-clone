@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
-use App\Models\User;
-use Laravolt\Crud\CrudModel;
-use Laravolt\Crud\CrudService;
-use Illuminate\Http\JsonResponse;
 use App\Helpers\ResponseFormatter;
-use App\Services\AuthenticationService;
-use Illuminate\Validation\ValidationException;
 use App\Http\Requests\Authentication\LoginRequest;
 use App\Http\Requests\Authentication\RegisterRequest;
+use App\Models\User;
+use App\Services\AuthenticationService;
+use Exception;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\ValidationException;
+use Laravolt\Crud\CrudModel;
+use Laravolt\Crud\CrudService;
 
 class AuthenticationController extends Controller
 {
@@ -36,7 +36,7 @@ class AuthenticationController extends Controller
 
     public function model(): CrudModel
     {
-        return new User();
+        return new User;
     }
 
     public function register(RegisterRequest $request): JsonResponse
