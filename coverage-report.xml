@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1760774005">
-  <project timestamp="1760774005">
+<coverage generated="1760774097">
+  <project timestamp="1760774097">
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Console/Kernel.php">
       <class name="App\Console\Kernel" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="5" coveredelements="3"/>

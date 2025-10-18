@@ -79,6 +79,8 @@ class AuthenticationControllerTest extends TestCase
                 ]
             ]);
 
+        $this->assertNotNull($response->json('data.token'));
+
         $this->assertTrue(Hash::check('password', $response->json('data.user.password')));
 
         $this->assertDatabaseHas((new User())->getTable(), [
