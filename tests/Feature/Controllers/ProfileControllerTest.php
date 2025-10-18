@@ -10,6 +10,9 @@ class ProfileControllerTest extends TestCase
 {
     use RefreshDatabase;
 
+    /*
+     * US03-BE-01: Memastikan validitas token sesi diperiksa saat aplikasi dibuka.
+     */
     public function test_success_get_my_profile(): void
     {
         $name = 'Test Name';
