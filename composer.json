@@ -5,14 +5,25 @@
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
+        "alurkerja-laravolt/crud": "dev-master",
+        "alurkerja-laravolt/rbac": "dev-master",
+        "bensampo/laravel-enum": "^6.12",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "maatwebsite/excel": "^3.1",
+        "opcodesio/log-viewer": "^3.19",
+        "ramsey/uuid": "^4.9",
+        "sentry/sentry-laravel": "^4.15",
+        "spatie/laravel-data": "^4.17",
+        "spatie/laravel-route-discovery": "^1.3"
     },
     "require-dev": {
+        "brianium/paratest": "^7.4",
         "fakerphp/faker": "^1.9.1",
+        "laravel/breeze": "^1.29",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
@@ -45,6 +56,12 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "testc": [
+            "@php artisan config:clear",
+            "@php artisan optimize:clear",
+            "@php artisan migrate:fresh --seed",
+            "XDEBUG_MODE=coverage php artisan test --parallel --processes=16 --coverage-clover=coverage-report.xml --log-junit=execution-report.xml"
         ]
     },
     "extra": {
@@ -62,5 +79,23 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "larvolt-rbac": {
+            "type": "vcs",
+            "url": "https://javan_rbac:javan-yNuAt_x5UMcvi9Kx1V95@gitlab.javan.co.id/alurkerja/alurkerja-laravolt/rbac"
+        },
+        "larvolt-qa": {
+            "type": "vcs",
+            "url": "https://javan_qa:javan-f6dV_khAwSBhMnwqBqJ5@gitlab.javan.co.id/alurkerja/alurkerja-laravolt/quality-assurance.git"
+        },
+        "larvolt-nocode": {
+            "type": "vcs",
+            "url": "https://javan_nocode:javan-qaarwogcs6DDSmhQ164s@gitlab.javan.co.id/alurkerja/alurkerja-laravolt/nocode.git"
+        },
+        "larvolt-crud": {
+            "type": "vcs",
+            "url": "https://gitlab.javan.co.id/alurkerja/alurkerja-laravolt/alurkerja-crud.git"
+        }
+    }
 }
