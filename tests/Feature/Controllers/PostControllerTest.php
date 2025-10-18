@@ -45,4 +45,22 @@ class PostControllerTest extends TestCase
             'caption' => $text,
         ]);
     }
+
+    public function test_failed_post_post_unauthorized(): void
+    {
+        Storage::fake('public');
+
+        $existingFile = UploadedFile::fake()->image('existing.jpg');
+
+        $text = fake()->text();
+
+        $response = $this
+            ->postJson('api/post', [
+                'image' => $existingFile,
+                'caption' => $text,
+            ]);
+
+        $response
+            ->assertStatus(Response::HTTP_UNAUTHORIZED);
+    }
 }
