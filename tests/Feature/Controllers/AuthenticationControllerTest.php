@@ -3,6 +3,8 @@
 namespace Tests\Feature\Controllers;
 
 use Tests\TestCase;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -52,5 +54,36 @@ class AuthenticationControllerTest extends TestCase
             ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
 
         $this->assertEquals('Wrong password.', $response->json('message'));
+    }
+
+    public function test_success_register(): void
+    {
+        $response = $this->postJson('api/auth/register', [
+            'name' => 'Test Name',
+            'email' => 'email@name.com',
+            'phone' => 'phonephone',
+            'password' => 'password'
+        ]);
+
+        $response
+            ->assertStatus(Response::HTTP_OK)
+            ->assertJsonStructure([
+                'status',
+                'message',
+                'data' => [
+                    'token',
+                    'user' => [
+                        'name',
+                        'password'
+                    ]
+                ]
+            ]);
+
+        $this->assertTrue(Hash::check('password', $response->json('data.user.password')));
+
+        $this->assertDatabaseHas((new User())->getTable(), [
+            'id' => $response->json('data.user.id'),
+            'name' => $response->json('data.user.name'),
+        ]);
     }
 }

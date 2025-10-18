@@ -9,9 +9,9 @@ use Laravolt\Crud\CrudService;
 use Illuminate\Http\JsonResponse;
 use App\Helpers\ResponseFormatter;
 use App\Services\AuthenticationService;
-use Spatie\RouteDiscovery\Attributes\Route;
 use Illuminate\Validation\ValidationException;
 use App\Http\Requests\Authentication\LoginRequest;
+use App\Http\Requests\Authentication\RegisterRequest;
 
 class AuthenticationController extends Controller
 {
@@ -19,7 +19,6 @@ class AuthenticationController extends Controller
      * @throws ValidationException
      * @throws Exception
      */
-    #[Route(method: 'post', uri: 'login')]
     public function login(LoginRequest $request): JsonResponse
     {
         /** @var AuthenticationService $service */
@@ -38,5 +37,16 @@ class AuthenticationController extends Controller
     public function model(): CrudModel
     {
         return new User();
+    }
+
+    public function register(RegisterRequest $request): JsonResponse
+    {
+        /** @var AuthenticationService $service */
+        $service = $this->service();
+
+        return ResponseFormatter::success(
+            data: $service->register($request),
+            message: 'Success Register'
+        );
     }
 }

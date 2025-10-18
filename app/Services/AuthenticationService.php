@@ -25,9 +25,23 @@ class AuthenticationService extends Service
             );
         }
 
+        return $this->showUser($user);
+    }
+
+    private function showUser(User $user): array
+    {
         return [
             'token' => $user->createToken('token')->plainTextToken,
             'user' => $user->toArray()
         ];
+    }
+
+    public function register(Request $request): array
+    {
+        /** @var User $user */
+        $user = User::query()
+            ->create($request->all());
+
+        return $this->showUser($user);
     }
 }
