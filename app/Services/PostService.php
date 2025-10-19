@@ -63,6 +63,8 @@ class PostService extends Service
         /** @var Post $post */
         $post = $model;
 
+        $post->load(['comments', 'likes']);
+
         $userId = Auth::id();
 
         if ($post->user_id !== $userId) {
@@ -70,6 +72,9 @@ class PostService extends Service
                 ['user_id' => 'You cannot delete this post! You must be the post owner.']
             );
         }
+
+        $post->comments()->delete();
+        $post->likes()->delete();
 
         return parent::delete($model);
     }

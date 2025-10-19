@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Controllers;
 
+use App\Models\Comment;
+use App\Models\Like;
 use App\Models\Post;
 use Database\Factories\FollowFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -198,5 +200,51 @@ class PostControllerTest extends TestCase
             ->assertJsonValidationErrors([
                 'user_id',
             ]);
+    }
+
+    public function test_all_related_data_likes_comments_are_deleted_from_db(): void
+    {
+        $user = $this->createUser();
+
+        $token = $this->createToken($user);
+
+        $post = Post::factory()
+            ->has(Comment::factory()->count(3))
+            ->has(Like::factory()->count(3))
+            ->create([
+                'user_id' => $user->id,
+            ]);
+
+        $this->assertDatabaseHas((new Comment)->getTable(), [
+            'post_id' => $post->id,
+        ]);
+
+        $this->assertDatabaseHas((new Like)->getTable(), [
+            'post_id' => $post->id,
+        ]);
+
+        $response = $this
+            ->withHeaders([
+                'Authorization' => 'Bearer '.$token,
+            ])
+            ->deleteJson('api/post/'.$post->id);
+
+        $response
+            ->assertStatus(Response::HTTP_OK)
+            ->assertJsonStructure([
+                'data',
+            ]);
+
+        $this->assertDatabaseMissing((new Comment)->getTable(), [
+            'post_id' => $post->id,
+        ]);
+
+        $this->assertDatabaseMissing((new Like)->getTable(), [
+            'post_id' => $post->id,
+        ]);
+
+        $this->assertDatabaseMissing((new Post)->getTable(), [
+            'id' => $post->id,
+        ]);
     }
 }
