@@ -16,9 +16,11 @@ class CommentService extends Service
         /** @var Comment $comment */
         $comment = $model;
 
+        $comment->load(['post']);
+
         $userId = Auth::id();
 
-        if ($comment->user_id !== $userId) {
+        if ($comment->user_id !== $userId || $comment->post->user_id !== $userId) {
             throw ValidationException::withMessages(
                 ['user_id' => 'You cannot delete this comment!']
             );
