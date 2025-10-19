@@ -174,4 +174,29 @@ class PostControllerTest extends TestCase
 
         $this->assertDatabaseCount((new Post)->getTable(), 16);
     }
+
+    public function test_delete_post_succeeds_if_authenticated_user_is_post_owner(): void
+    {
+        $user = $this->createUser();
+        $userB = $this->createUser();
+
+        $token = $this->createToken($user);
+
+        $post = Post::factory()
+            ->create([
+                'user_id' => $userB->id,
+            ]);
+
+        $response = $this
+            ->withHeaders([
+                'Authorization' => 'Bearer '.$token,
+            ])
+            ->deleteJson('api/post/'.$post->id);
+
+        $response
+            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
+            ->assertJsonValidationErrors([
+                'user_id',
+            ]);
+    }
 }

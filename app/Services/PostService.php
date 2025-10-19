@@ -8,6 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 use Laravolt\Crud\Contracts\StoreRequestContract;
 
 class PostService extends Service
@@ -52,5 +53,24 @@ class PostService extends Service
             ->with(['user']);
 
         return $query;
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    public function delete(mixed $model): ?bool
+    {
+        /** @var Post $post */
+        $post = $model;
+
+        $userId = Auth::id();
+
+        if ($post->user_id !== $userId) {
+            throw ValidationException::withMessages(
+                ['user_id' => 'You cannot delete this post! You must be the post owner.']
+            );
+        }
+
+        return parent::delete($model);
     }
 }

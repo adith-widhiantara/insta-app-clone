@@ -37,4 +37,9 @@ abstract class TestCase extends BaseTestCase
     {
         return User::factory()->create($attributes);
     }
+
+    protected function createToken(User $user): string
+    {
+        return $user->createToken('TestToken')->plainTextToken;
+    }
 }
