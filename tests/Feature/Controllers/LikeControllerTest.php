@@ -33,7 +33,7 @@ class LikeControllerTest extends TestCase
             ]);
 
         $response
-            ->assertStatus(Response::HTTP_CREATED)
+            ->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
                 'data' => [
                     'user_id',
@@ -42,6 +42,46 @@ class LikeControllerTest extends TestCase
             ]);
 
         $this->assertDatabaseHas((new Like)->getTable(), [
+            'id' => $response->json('data.id'),
+        ]);
+    }
+
+    public function test_like_removed_from_db_if_same_user_clicks_again_toggle(): void
+    {
+        $user = $this->createUser();
+
+        $token = $user->createToken('test')->plainTextToken;
+
+        $post = Post::factory()
+            ->create([
+                'user_id' => $user->id,
+            ]);
+
+        Like::factory()
+            ->create([
+                'post_id' => $post->id,
+                'user_id' => $user->id,
+            ]);
+
+        $response = $this
+            ->withHeaders([
+                'Authorization' => 'Bearer '.$token,
+            ])
+            ->postJson('api/like', [
+                'user_id' => $user->id,
+                'post_id' => $post->id,
+            ]);
+
+        $response
+            ->assertStatus(Response::HTTP_OK)
+            ->assertJsonStructure([
+                'data' => [
+                    'user_id',
+                    'post_id',
+                ],
+            ]);
+
+        $this->assertDatabaseMissing((new Like)->getTable(), [
             'id' => $response->json('data.id'),
         ]);
     }
