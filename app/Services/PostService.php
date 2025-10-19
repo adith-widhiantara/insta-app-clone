@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use Laravolt\Crud\Contracts\StoreRequestContract;
+use Laravolt\Crud\CrudModel;
 
 class PostService extends Service
 {
@@ -77,5 +78,15 @@ class PostService extends Service
         $post->likes()->delete();
 
         return parent::delete($model);
+    }
+
+    protected function afterFind(CrudModel $model): CrudModel
+    {
+        /** @var Post $post */
+        $post = parent::afterFind($model);
+
+        $post->load(['comments.user']);
+
+        return $post;
     }
 }

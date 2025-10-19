@@ -10,4 +10,9 @@ class Comment extends BaseModel
     {
         return $this->belongsTo(Post::class);
     }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }
