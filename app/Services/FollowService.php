@@ -37,11 +37,41 @@ class FollowService extends Service
             ->with(['following'])
             ->firstOrFail();
 
-        $userToFollow = User::query()
-            ->where('id', $userToFollowId)
+        $currentUser->following()->attach($userToFollowId);
+
+        $currentUser->refresh();
+
+        return $currentUser;
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    public function unfollowUser(Request $request): CrudModel
+    {
+        $userId = auth()->id();
+        $userToFollowId = $request->input('user_id');
+
+        $follow = Follow::query()
+            ->where([
+                'follower_id' => $userId,
+                'following_id' => $userToFollowId,
+            ])
+            ->exists();
+
+        if (! $follow) {
+            throw ValidationException::withMessages([
+                'following_id' => 'You not follow this user',
+            ]);
+        }
+
+        /** @var User $currentUser */
+        $currentUser = User::query()
+            ->where('id', $userId)
+            ->with(['following'])
             ->firstOrFail();
 
-        $currentUser->following()->attach($userToFollow->id);
+        $currentUser->following()->detach($userToFollowId);
 
         $currentUser->refresh();
 

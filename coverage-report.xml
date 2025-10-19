@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1760852576">
-  <project timestamp="1760852576">
+<coverage generated="1760852881">
+  <project timestamp="1760852881">
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Console/Kernel.php">
       <class name="App\Console\Kernel" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="5" coveredelements="3"/>
       </class>
       <line num="13" type="method" name="schedule" visibility="protected" complexity="1" crap="2" count="0"/>
       <line num="16" type="stmt" count="0"/>
-      <line num="21" type="method" name="commands" visibility="protected" complexity="1" crap="1" count="29"/>
-      <line num="23" type="stmt" count="29"/>
-      <line num="25" type="stmt" count="29"/>
+      <line num="21" type="method" name="commands" visibility="protected" complexity="1" crap="1" count="30"/>
+      <line num="23" type="stmt" count="30"/>
+      <line num="25" type="stmt" count="30"/>
       <metrics loc="28" ncloc="21" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="5" coveredelements="3"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Exceptions/Handler.php">
       <class name="App\Exceptions\Handler" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
       </class>
-      <line num="24" type="method" name="register" visibility="public" complexity="1" crap="1" count="29"/>
-      <line num="26" type="stmt" count="29"/>
-      <line num="28" type="stmt" count="29"/>
+      <line num="24" type="method" name="register" visibility="public" complexity="1" crap="1" count="30"/>
+      <line num="26" type="stmt" count="30"/>
+      <line num="28" type="stmt" count="30"/>
       <metrics loc="31" ncloc="22" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Helpers/ResponseFormatter.php">
@@ -45,22 +45,25 @@
       </class>
       <line num="13" type="method" name="service" visibility="protected" complexity="1" crap="1" count="5"/>
       <line num="15" type="stmt" count="5"/>
-      <line num="18" type="method" name="model" visibility="public" complexity="1" crap="1" count="29"/>
-      <line num="20" type="stmt" count="29"/>
+      <line num="18" type="method" name="model" visibility="public" complexity="1" crap="1" count="30"/>
+      <line num="20" type="stmt" count="30"/>
       <metrics loc="23" ncloc="23" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Http/Controllers/Api/FollowController.php">
       <class name="App\Http\Controllers\Api\FollowController" namespace="global">
-        <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="7" coveredelements="7"/>
+        <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="10" coveredelements="10"/>
       </class>
       <line num="23" type="method" name="followUser" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="27" type="stmt" count="2"/>
       <line num="29" type="stmt" count="2"/>
-      <line num="32" type="method" name="service" visibility="protected" complexity="1" crap="1" count="2"/>
-      <line num="34" type="stmt" count="2"/>
-      <line num="37" type="method" name="model" visibility="public" complexity="1" crap="1" count="29"/>
-      <line num="39" type="stmt" count="29"/>
-      <metrics loc="42" ncloc="38" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="7" coveredelements="7"/>
+      <line num="32" type="method" name="service" visibility="protected" complexity="1" crap="1" count="3"/>
+      <line num="34" type="stmt" count="3"/>
+      <line num="37" type="method" name="model" visibility="public" complexity="1" crap="1" count="30"/>
+      <line num="39" type="stmt" count="30"/>
+      <line num="45" type="method" name="unfollowUser" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="49" type="stmt" count="1"/>
+      <line num="51" type="stmt" count="1"/>
+      <metrics loc="54" ncloc="46" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="10" coveredelements="10"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Http/Controllers/Api/LikeController.php">
       <class name="App\Http\Controllers\Api\LikeController" namespace="global">
@@ -71,8 +74,8 @@
       <line num="20" type="stmt" count="2"/>
       <line num="23" type="method" name="service" visibility="protected" complexity="1" crap="1" count="2"/>
       <line num="25" type="stmt" count="2"/>
-      <line num="28" type="method" name="model" visibility="public" complexity="1" crap="1" count="29"/>
-      <line num="30" type="stmt" count="29"/>
+      <line num="28" type="method" name="model" visibility="public" complexity="1" crap="1" count="30"/>
+      <line num="30" type="stmt" count="30"/>
       <metrics loc="33" ncloc="32" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="7" coveredelements="7"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Http/Controllers/Api/PostController.php">
@@ -84,8 +87,8 @@
       <line num="31" type="stmt" count="1"/>
       <line num="34" type="method" name="service" visibility="protected" complexity="1" crap="1" count="6"/>
       <line num="36" type="stmt" count="6"/>
-      <line num="39" type="method" name="model" visibility="public" complexity="1" crap="1" count="29"/>
-      <line num="41" type="stmt" count="29"/>
+      <line num="39" type="method" name="model" visibility="public" complexity="1" crap="1" count="30"/>
+      <line num="41" type="stmt" count="30"/>
       <metrics loc="44" ncloc="40" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="7" coveredelements="7"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Http/Controllers/Api/ProfileController.php">
@@ -99,8 +102,8 @@
       <line num="29" type="stmt" count="1"/>
       <line num="32" type="method" name="service" visibility="protected" complexity="1" crap="1" count="1"/>
       <line num="34" type="stmt" count="1"/>
-      <line num="37" type="method" name="model" visibility="public" complexity="1" crap="1" count="29"/>
-      <line num="39" type="stmt" count="29"/>
+      <line num="37" type="method" name="model" visibility="public" complexity="1" crap="1" count="30"/>
+      <line num="39" type="stmt" count="30"/>
       <metrics loc="42" ncloc="38" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="9" coveredelements="9"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Http/Controllers/AuthenticationController.php">
@@ -234,10 +237,10 @@
       <class name="App\Http\Requests\Follow\FollowUserRequest" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
       </class>
-      <line num="11" type="method" name="rules" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="13" type="stmt" count="2"/>
-      <line num="14" type="stmt" count="2"/>
-      <line num="15" type="stmt" count="2"/>
+      <line num="11" type="method" name="rules" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="13" type="stmt" count="3"/>
+      <line num="14" type="stmt" count="3"/>
+      <line num="15" type="stmt" count="3"/>
       <metrics loc="18" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Http/Requests/Post/StoreRequest.php">
@@ -260,8 +263,8 @@
       <class name="App\Http\Requests\Request" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="16" type="method" name="authorize" visibility="public" complexity="1" crap="1" count="8"/>
-      <line num="18" type="stmt" count="8"/>
+      <line num="16" type="method" name="authorize" visibility="public" complexity="1" crap="1" count="9"/>
+      <line num="18" type="stmt" count="9"/>
       <metrics loc="21" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Models/BaseModel.php">
@@ -306,10 +309,10 @@
       <class name="App\Models\User" namespace="global">
         <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="9" coveredelements="9"/>
       </class>
-      <line num="47" type="method" name="following" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="49" type="stmt" count="2"/>
-      <line num="50" type="stmt" count="2"/>
-      <line num="51" type="stmt" count="2"/>
+      <line num="47" type="method" name="following" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="49" type="stmt" count="3"/>
+      <line num="50" type="stmt" count="3"/>
+      <line num="51" type="stmt" count="3"/>
       <line num="54" type="method" name="followers" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="56" type="stmt" count="1"/>
       <line num="57" type="stmt" count="1"/>
@@ -321,18 +324,18 @@
       <class name="App\Providers\AppServiceProvider" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </class>
-      <line num="12" type="method" name="register" visibility="public" complexity="1" crap="1" count="29"/>
-      <line num="15" type="stmt" count="29"/>
-      <line num="20" type="method" name="boot" visibility="public" complexity="1" crap="1" count="29"/>
-      <line num="23" type="stmt" count="29"/>
+      <line num="12" type="method" name="register" visibility="public" complexity="1" crap="1" count="30"/>
+      <line num="15" type="stmt" count="30"/>
+      <line num="20" type="method" name="boot" visibility="public" complexity="1" crap="1" count="30"/>
+      <line num="23" type="stmt" count="30"/>
       <metrics loc="25" ncloc="17" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Providers/AuthServiceProvider.php">
       <class name="App\Providers\AuthServiceProvider" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="22" type="method" name="boot" visibility="public" complexity="1" crap="1" count="29"/>
-      <line num="25" type="stmt" count="29"/>
+      <line num="22" type="method" name="boot" visibility="public" complexity="1" crap="1" count="30"/>
+      <line num="25" type="stmt" count="30"/>
       <metrics loc="27" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Providers/BroadcastServiceProvider.php">
@@ -348,27 +351,27 @@
       <class name="App\Providers\EventServiceProvider" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </class>
-      <line num="26" type="method" name="boot" visibility="public" complexity="1" crap="1" count="29"/>
-      <line num="29" type="stmt" count="29"/>
-      <line num="34" type="method" name="shouldDiscoverEvents" visibility="public" complexity="1" crap="1" count="29"/>
-      <line num="36" type="stmt" count="29"/>
+      <line num="26" type="method" name="boot" visibility="public" complexity="1" crap="1" count="30"/>
+      <line num="29" type="stmt" count="30"/>
+      <line num="34" type="method" name="shouldDiscoverEvents" visibility="public" complexity="1" crap="1" count="30"/>
+      <line num="36" type="stmt" count="30"/>
       <metrics loc="39" ncloc="27" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Providers/RouteServiceProvider.php">
       <class name="App\Providers\RouteServiceProvider" namespace="global">
         <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="11" coveredelements="11"/>
       </class>
-      <line num="25" type="method" name="boot" visibility="public" complexity="2" crap="2" count="29"/>
-      <line num="27" type="stmt" count="29"/>
-      <line num="28" type="stmt" count="22"/>
-      <line num="29" type="stmt" count="29"/>
-      <line num="31" type="stmt" count="29"/>
-      <line num="32" type="stmt" count="29"/>
-      <line num="33" type="stmt" count="29"/>
-      <line num="34" type="stmt" count="29"/>
-      <line num="36" type="stmt" count="29"/>
-      <line num="37" type="stmt" count="29"/>
-      <line num="38" type="stmt" count="29"/>
+      <line num="25" type="method" name="boot" visibility="public" complexity="2" crap="2" count="30"/>
+      <line num="27" type="stmt" count="30"/>
+      <line num="28" type="stmt" count="23"/>
+      <line num="29" type="stmt" count="30"/>
+      <line num="31" type="stmt" count="30"/>
+      <line num="32" type="stmt" count="30"/>
+      <line num="33" type="stmt" count="30"/>
+      <line num="34" type="stmt" count="30"/>
+      <line num="36" type="stmt" count="30"/>
+      <line num="37" type="stmt" count="30"/>
+      <line num="38" type="stmt" count="30"/>
       <metrics loc="41" ncloc="31" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="11" coveredelements="11"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Services/AuthenticationService.php">
@@ -414,7 +417,7 @@
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Services/FollowService.php">
       <class name="App\Services\FollowService" namespace="global">
-        <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="22" elements="23" coveredelements="23"/>
+        <metrics complexity="4" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="38" coveredstatements="35" elements="40" coveredelements="36"/>
       </class>
       <line num="16" type="method" name="followUser" visibility="public" complexity="2" crap="2" count="2"/>
       <line num="18" type="stmt" count="2"/>
@@ -434,12 +437,29 @@
       <line num="37" type="stmt" count="1"/>
       <line num="38" type="stmt" count="1"/>
       <line num="40" type="stmt" count="1"/>
-      <line num="41" type="stmt" count="1"/>
       <line num="42" type="stmt" count="1"/>
       <line num="44" type="stmt" count="1"/>
-      <line num="46" type="stmt" count="1"/>
-      <line num="48" type="stmt" count="1"/>
-      <metrics loc="51" ncloc="47" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="22" elements="23" coveredelements="23"/>
+      <line num="50" type="method" name="unfollowUser" visibility="public" complexity="2" crap="2.02" count="1"/>
+      <line num="52" type="stmt" count="1"/>
+      <line num="53" type="stmt" count="1"/>
+      <line num="55" type="stmt" count="1"/>
+      <line num="56" type="stmt" count="1"/>
+      <line num="57" type="stmt" count="1"/>
+      <line num="58" type="stmt" count="1"/>
+      <line num="59" type="stmt" count="1"/>
+      <line num="60" type="stmt" count="1"/>
+      <line num="62" type="stmt" count="1"/>
+      <line num="63" type="stmt" count="0"/>
+      <line num="64" type="stmt" count="0"/>
+      <line num="65" type="stmt" count="0"/>
+      <line num="69" type="stmt" count="1"/>
+      <line num="70" type="stmt" count="1"/>
+      <line num="71" type="stmt" count="1"/>
+      <line num="72" type="stmt" count="1"/>
+      <line num="74" type="stmt" count="1"/>
+      <line num="76" type="stmt" count="1"/>
+      <line num="78" type="stmt" count="1"/>
+      <metrics loc="81" ncloc="73" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="38" coveredstatements="35" elements="40" coveredelements="36"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Services/LikeService.php">
       <class name="App\Services\LikeService" namespace="global">
@@ -515,6 +535,6 @@
       </class>
       <metrics loc="11" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <metrics files="44" loc="1296" ncloc="1102" classes="31" methods="57" coveredmethods="52" conditionals="0" coveredconditionals="0" statements="193" coveredstatements="177" elements="250" coveredelements="229"/>
+    <metrics files="44" loc="1338" ncloc="1136" classes="31" methods="59" coveredmethods="53" conditionals="0" coveredconditionals="0" statements="211" coveredstatements="192" elements="270" coveredelements="245"/>
   </project>
 </coverage>

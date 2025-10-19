@@ -76,4 +76,42 @@ class FollowControllerTest extends TestCase
                 'following_id',
             ]);
     }
+
+    public function test_corresponding_follow_relationship_entry_is_deleted_from_follows_table(): void
+    {
+        $userA = $this->createUser();
+        $userB = $this->createUser();
+
+        FollowFactory::new()
+            ->relationship($userA->id, $userB->id)
+            ->create();
+
+        $this->assertDatabaseHas((new Follow)->getTable(), [
+            'follower_id' => $userA->id,
+            'following_id' => $userB->id,
+        ]);
+
+        $token = $this->createToken($userA);
+
+        $response = $this
+            ->withHeaders([
+                'Authorization' => 'Bearer '.$token,
+            ])
+            ->postJson('api/follow/unfollow-user', [
+                'user_id' => $userB->id,
+            ]);
+
+        $response
+            ->assertStatus(Response::HTTP_OK)
+            ->assertJsonStructure([
+                'data' => [
+                    'id',
+                ],
+            ]);
+
+        $this->assertDatabaseMissing((new Follow)->getTable(), [
+            'follower_id' => $userA->id,
+            'following_id' => $userB->id,
+        ]);
+    }
 }

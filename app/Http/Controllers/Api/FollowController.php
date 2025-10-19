@@ -38,4 +38,16 @@ class FollowController extends BaseController
     {
         return new Follow;
     }
+
+    /**
+     * @throws Exception
+     */
+    #[Route(method: 'post')]
+    public function unfollowUser(FollowUserRequest $request): JsonResource
+    {
+        /** @var FollowService $service */
+        $service = $this->service();
+
+        return $this->single($service->unfollowUser($request));
+    }
 }
