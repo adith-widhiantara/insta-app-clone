@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Controllers;
 
-use App\Models\Follow;
 use App\Models\Post;
 use Database\Factories\FollowFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -122,9 +121,6 @@ class PostControllerTest extends TestCase
 
         FollowFactory::new()
             ->relationship($user->id, $userB->id)
-            ->create();
-
-        Follow::factory()
             ->create();
 
         Post::factory()
