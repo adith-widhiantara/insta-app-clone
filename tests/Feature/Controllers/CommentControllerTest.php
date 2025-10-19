@@ -80,4 +80,26 @@ class CommentControllerTest extends TestCase
                 'content',
             ]);
     }
+
+    public function test_authorization_token_is_required(): void
+    {
+        $user = $this->createUser();
+
+        $post = Post::factory()
+            ->create([
+                'user_id' => $user->id,
+            ]);
+
+        $text = fake()->text();
+
+        $response = $this
+            ->postJson('api/comment', [
+                'user_id' => $user->id,
+                'post_id' => $post->id,
+                'content' => $text,
+            ]);
+
+        $response
+            ->assertStatus(Response::HTTP_UNAUTHORIZED);
+    }
 }
