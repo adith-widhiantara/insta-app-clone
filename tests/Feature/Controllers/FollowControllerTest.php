@@ -114,4 +114,31 @@ class FollowControllerTest extends TestCase
             'following_id' => $userB->id,
         ]);
     }
+
+    public function test_unfollow_fails_if_follow_relationship_not_found_no_data(): void
+    {
+        $userA = $this->createUser();
+        $userB = $this->createUser();
+
+        $this->assertDatabaseMissing((new Follow)->getTable(), [
+            'follower_id' => $userA->id,
+            'following_id' => $userB->id,
+        ]);
+
+        $token = $this->createToken($userA);
+
+        $response = $this
+            ->withHeaders([
+                'Authorization' => 'Bearer '.$token,
+            ])
+            ->postJson('api/follow/unfollow-user', [
+                'user_id' => $userB->id,
+            ]);
+
+        $response
+            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
+            ->assertJsonValidationErrors([
+                'following_id',
+            ]);
+    }
 }
