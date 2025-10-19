@@ -20,9 +20,13 @@ class CommentService extends Service
 
         $userId = Auth::id();
 
-        if ($comment->user_id !== $userId || $comment->post->user_id !== $userId) {
+        $isCommentOwner = $comment->user_id === $userId;
+        $isPostOwner = $comment->post->user_id === $userId;
+
+        if (! $isCommentOwner && ! $isPostOwner) {
+            // Jika tidak memiliki izin, lempar ValidationException
             throw ValidationException::withMessages(
-                ['user_id' => 'You cannot delete this comment!']
+                ['user_id' => 'You cannot delete this comment! You must be the comment owner or the post owner.']
             );
         }
 
