@@ -180,6 +180,30 @@ class PostControllerTest extends TestCase
     public function test_delete_post_succeeds_if_authenticated_user_is_post_owner(): void
     {
         $user = $this->createUser();
+
+        $token = $this->createToken($user);
+
+        $post = Post::factory()
+            ->create([
+                'user_id' => $user->id,
+            ]);
+
+        $response = $this
+            ->withHeaders([
+                'Authorization' => 'Bearer '.$token,
+            ])
+            ->deleteJson('api/post/'.$post->id);
+
+        $response
+            ->assertStatus(Response::HTTP_OK)
+            ->assertJsonStructure([
+                'data',
+            ]);
+    }
+
+    public function test_delete_post_fails_with_access_denied_error_if_user_id_differs(): void
+    {
+        $user = $this->createUser();
         $userB = $this->createUser();
 
         $token = $this->createToken($user);
