@@ -85,4 +85,23 @@ class LikeControllerTest extends TestCase
             'id' => $response->json('data.id'),
         ]);
     }
+
+    public function test_authorization_token_is_required(): void
+    {
+        $user = $this->createUser();
+
+        $post = Post::factory()
+            ->create([
+                'user_id' => $user->id,
+            ]);
+
+        $response = $this
+            ->postJson('api/like', [
+                'user_id' => $user->id,
+                'post_id' => $post->id,
+            ]);
+
+        $response
+            ->assertStatus(Response::HTTP_UNAUTHORIZED);
+    }
 }
