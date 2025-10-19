@@ -63,4 +63,45 @@ class PostControllerTest extends TestCase
         $response
             ->assertStatus(Response::HTTP_UNAUTHORIZED);
     }
+
+    public function test_profile_endpoint_returns_only_authenticated_user_posts_data(): void
+    {
+        $user = $this->createUser();
+
+        $token = $user->createToken('test')->plainTextToken;
+
+        Post::factory()
+            ->count(5)
+            ->create();
+
+        Post::factory()
+            ->count(5)
+            ->create([
+                'user_id' => $user->id,
+            ]);
+
+        $response = $this
+            ->withHeaders([
+                'Authorization' => 'Bearer '.$token,
+            ])
+            ->getJson('api/post/my-post');
+
+        $response
+            ->assertStatus(Response::HTTP_OK)
+            ->assertJsonStructure([
+                'status',
+                'message',
+                'data' => [
+                    '*' => [
+                        'user_id',
+                        'image_url',
+                        'caption',
+                    ],
+                ],
+            ]);
+
+        $this->assertCount(5, $response->json('data'));
+
+        $this->assertDatabaseCount((new Post)->getTable(), 10);
+    }
 }

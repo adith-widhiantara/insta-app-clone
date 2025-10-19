@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1760778291">
-  <project timestamp="1760778291">
+<coverage generated="1760837704">
+  <project timestamp="1760837704">
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Console/Kernel.php">
       <class name="App\Console\Kernel" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="5" coveredelements="3"/>
       </class>
       <line num="13" type="method" name="schedule" visibility="protected" complexity="1" crap="2" count="0"/>
       <line num="16" type="stmt" count="0"/>
-      <line num="21" type="method" name="commands" visibility="protected" complexity="1" crap="1" count="10"/>
-      <line num="23" type="stmt" count="10"/>
-      <line num="25" type="stmt" count="10"/>
+      <line num="21" type="method" name="commands" visibility="protected" complexity="1" crap="1" count="11"/>
+      <line num="23" type="stmt" count="11"/>
+      <line num="25" type="stmt" count="11"/>
       <metrics loc="28" ncloc="21" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="5" coveredelements="3"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Exceptions/Handler.php">
       <class name="App\Exceptions\Handler" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
       </class>
-      <line num="24" type="method" name="register" visibility="public" complexity="1" crap="1" count="10"/>
-      <line num="26" type="stmt" count="10"/>
-      <line num="28" type="stmt" count="10"/>
+      <line num="24" type="method" name="register" visibility="public" complexity="1" crap="1" count="11"/>
+      <line num="26" type="stmt" count="11"/>
+      <line num="28" type="stmt" count="11"/>
       <metrics loc="31" ncloc="22" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Helpers/ResponseFormatter.php">
       <class name="App\Helpers\ResponseFormatter" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="5" elements="12" coveredelements="6"/>
       </class>
-      <line num="10" type="method" name="success" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="16" type="stmt" count="3"/>
-      <line num="17" type="stmt" count="3"/>
-      <line num="18" type="stmt" count="3"/>
-      <line num="19" type="stmt" count="3"/>
-      <line num="20" type="stmt" count="3"/>
+      <line num="10" type="method" name="success" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="16" type="stmt" count="4"/>
+      <line num="17" type="stmt" count="4"/>
+      <line num="18" type="stmt" count="4"/>
+      <line num="19" type="stmt" count="4"/>
+      <line num="20" type="stmt" count="4"/>
       <line num="23" type="method" name="error" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="29" type="stmt" count="0"/>
       <line num="30" type="stmt" count="0"/>
@@ -41,13 +41,19 @@
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Http/Controllers/Api/PostController.php">
       <class name="App\Http\Controllers\Api\PostController" namespace="global">
-        <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+        <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="10" coveredelements="10"/>
       </class>
-      <line num="16" type="method" name="service" visibility="protected" complexity="1" crap="1" count="1"/>
-      <line num="18" type="stmt" count="1"/>
-      <line num="21" type="method" name="model" visibility="public" complexity="1" crap="1" count="10"/>
-      <line num="23" type="stmt" count="10"/>
-      <metrics loc="26" ncloc="26" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+      <line num="23" type="method" name="myPost" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="27" type="stmt" count="1"/>
+      <line num="29" type="stmt" count="1"/>
+      <line num="30" type="stmt" count="1"/>
+      <line num="31" type="stmt" count="1"/>
+      <line num="32" type="stmt" count="1"/>
+      <line num="35" type="method" name="service" visibility="protected" complexity="1" crap="1" count="2"/>
+      <line num="37" type="stmt" count="2"/>
+      <line num="40" type="method" name="model" visibility="public" complexity="1" crap="1" count="11"/>
+      <line num="42" type="stmt" count="11"/>
+      <metrics loc="45" ncloc="41" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="10" coveredelements="10"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Http/Controllers/Api/ProfileController.php">
       <class name="App\Http\Controllers\Api\ProfileController" namespace="global">
@@ -60,8 +66,8 @@
       <line num="29" type="stmt" count="1"/>
       <line num="32" type="method" name="service" visibility="protected" complexity="1" crap="1" count="1"/>
       <line num="34" type="stmt" count="1"/>
-      <line num="37" type="method" name="model" visibility="public" complexity="1" crap="1" count="10"/>
-      <line num="39" type="stmt" count="10"/>
+      <line num="37" type="method" name="model" visibility="public" complexity="1" crap="1" count="11"/>
+      <line num="39" type="stmt" count="11"/>
       <metrics loc="42" ncloc="38" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="9" coveredelements="9"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Http/Controllers/AuthenticationController.php">
@@ -243,18 +249,18 @@
       <class name="App\Providers\AppServiceProvider" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </class>
-      <line num="12" type="method" name="register" visibility="public" complexity="1" crap="1" count="10"/>
-      <line num="15" type="stmt" count="10"/>
-      <line num="20" type="method" name="boot" visibility="public" complexity="1" crap="1" count="10"/>
-      <line num="23" type="stmt" count="10"/>
+      <line num="12" type="method" name="register" visibility="public" complexity="1" crap="1" count="11"/>
+      <line num="15" type="stmt" count="11"/>
+      <line num="20" type="method" name="boot" visibility="public" complexity="1" crap="1" count="11"/>
+      <line num="23" type="stmt" count="11"/>
       <metrics loc="25" ncloc="17" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Providers/AuthServiceProvider.php">
       <class name="App\Providers\AuthServiceProvider" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="22" type="method" name="boot" visibility="public" complexity="1" crap="1" count="10"/>
-      <line num="25" type="stmt" count="10"/>
+      <line num="22" type="method" name="boot" visibility="public" complexity="1" crap="1" count="11"/>
+      <line num="25" type="stmt" count="11"/>
       <metrics loc="27" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Providers/BroadcastServiceProvider.php">
@@ -270,27 +276,27 @@
       <class name="App\Providers\EventServiceProvider" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </class>
-      <line num="26" type="method" name="boot" visibility="public" complexity="1" crap="1" count="10"/>
-      <line num="29" type="stmt" count="10"/>
-      <line num="34" type="method" name="shouldDiscoverEvents" visibility="public" complexity="1" crap="1" count="10"/>
-      <line num="36" type="stmt" count="10"/>
+      <line num="26" type="method" name="boot" visibility="public" complexity="1" crap="1" count="11"/>
+      <line num="29" type="stmt" count="11"/>
+      <line num="34" type="method" name="shouldDiscoverEvents" visibility="public" complexity="1" crap="1" count="11"/>
+      <line num="36" type="stmt" count="11"/>
       <metrics loc="39" ncloc="27" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Providers/RouteServiceProvider.php">
       <class name="App\Providers\RouteServiceProvider" namespace="global">
         <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="11" coveredelements="11"/>
       </class>
-      <line num="25" type="method" name="boot" visibility="public" complexity="2" crap="2" count="10"/>
-      <line num="27" type="stmt" count="10"/>
-      <line num="28" type="stmt" count="7"/>
-      <line num="29" type="stmt" count="10"/>
-      <line num="31" type="stmt" count="10"/>
-      <line num="32" type="stmt" count="10"/>
-      <line num="33" type="stmt" count="10"/>
-      <line num="34" type="stmt" count="10"/>
-      <line num="36" type="stmt" count="10"/>
-      <line num="37" type="stmt" count="10"/>
-      <line num="38" type="stmt" count="10"/>
+      <line num="25" type="method" name="boot" visibility="public" complexity="2" crap="2" count="11"/>
+      <line num="27" type="stmt" count="11"/>
+      <line num="28" type="stmt" count="8"/>
+      <line num="29" type="stmt" count="11"/>
+      <line num="31" type="stmt" count="11"/>
+      <line num="32" type="stmt" count="11"/>
+      <line num="33" type="stmt" count="11"/>
+      <line num="34" type="stmt" count="11"/>
+      <line num="36" type="stmt" count="11"/>
+      <line num="37" type="stmt" count="11"/>
+      <line num="38" type="stmt" count="11"/>
       <metrics loc="41" ncloc="31" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="11" coveredelements="11"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Services/AuthenticationService.php">
@@ -319,14 +325,18 @@
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Services/PostService.php">
       <class name="App\Services\PostService" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+        <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
       </class>
-      <line num="11" type="method" name="prepareCreateData" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="13" type="stmt" count="1"/>
-      <line num="15" type="stmt" count="1"/>
-      <line num="17" type="stmt" count="1"/>
-      <line num="19" type="stmt" count="1"/>
-      <metrics loc="22" ncloc="22" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      <line num="14" type="method" name="prepareCreateData" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="16" type="stmt" count="1"/>
+      <line num="18" type="stmt" count="1"/>
+      <line num="20" type="stmt" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="25" type="method" name="myPost" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="27" type="stmt" count="1"/>
+      <line num="28" type="stmt" count="1"/>
+      <line num="29" type="stmt" count="1"/>
+      <metrics loc="32" ncloc="32" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
     </file>
     <file name="/Users/adithwidhiantara/work/learn/insta-app-clone/app/Services/ProfileService.php">
       <class name="App\Services\ProfileService" namespace="global">
@@ -345,6 +355,6 @@
       </class>
       <metrics loc="11" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <metrics files="35" loc="925" ncloc="754" classes="21" methods="34" coveredmethods="29" conditionals="0" coveredconditionals="0" statements="100" coveredstatements="84" elements="134" coveredelements="113"/>
+    <metrics files="35" loc="954" ncloc="779" classes="21" methods="36" coveredmethods="31" conditionals="0" coveredconditionals="0" statements="108" coveredstatements="92" elements="144" coveredelements="123"/>
   </project>
 </coverage>

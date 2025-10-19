@@ -2,7 +2,10 @@
 
 namespace App\Services;
 
+use App\Models\Post;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Laravolt\Crud\Contracts\StoreRequestContract;
 
@@ -17,5 +20,12 @@ class PostService extends Service
         unset($data['image']);
 
         return $data;
+    }
+
+    public function myPost(): Collection|array
+    {
+        return Post::query()
+            ->where('user_id', Auth::id())
+            ->get();
     }
 }
