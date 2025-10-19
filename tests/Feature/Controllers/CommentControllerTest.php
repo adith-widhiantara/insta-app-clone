@@ -50,4 +50,34 @@ class CommentControllerTest extends TestCase
             'content' => $text,
         ]);
     }
+
+    public function test_verify_comment_text_length_limit(): void
+    {
+        $user = $this->createUser();
+
+        $token = $user->createToken('test')->plainTextToken;
+
+        $post = Post::factory()
+            ->create([
+                'user_id' => $user->id,
+            ]);
+
+        $text = fake()->text(500);
+
+        $response = $this
+            ->withHeaders([
+                'Authorization' => 'Bearer '.$token,
+            ])
+            ->postJson('api/comment', [
+                'user_id' => $user->id,
+                'post_id' => $post->id,
+                'content' => $text,
+            ]);
+
+        $response
+            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
+            ->assertJsonValidationErrors([
+                'content',
+            ]);
+    }
 }
