@@ -155,6 +155,9 @@ class PostControllerTest extends TestCase
             ])
             ->getJson('api/post');
 
+        /*
+         * this include TC US06-BE-02
+         */
         $response
             ->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
