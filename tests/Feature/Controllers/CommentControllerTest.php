@@ -139,4 +139,42 @@ class CommentControllerTest extends TestCase
             'id' => $comment->id,
         ]);
     }
+
+    public function test_delete_comment_fails_with_access_denied_error_if_user_id_differs(): void
+    {
+        $user = $this->createUser();
+        $userB = $this->createUser();
+
+        $token = $user->createToken('test')->plainTextToken;
+
+        $post = Post::factory()
+            ->create([
+                'user_id' => $user->id,
+            ]);
+
+        $text = fake()->text();
+
+        $comment = Comment::factory()
+            ->create([
+                'user_id' => $userB->id,
+                'post_id' => $post->id,
+                'content' => $text,
+            ]);
+
+        $response = $this
+            ->withHeaders([
+                'Authorization' => 'Bearer '.$token,
+            ])
+            ->deleteJson('api/comment/'.$comment->id);
+
+        $response
+            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
+            ->assertJsonValidationErrors([
+                'user_id',
+            ]);
+
+        $this->assertDatabaseHas((new Comment)->getTable(), [
+            'id' => $comment->id,
+        ]);
+    }
 }
