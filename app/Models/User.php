@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -41,4 +43,22 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function following(): BelongsToMany
+    {
+        return $this
+            ->belongsToMany(__CLASS__, 'follows', 'follower_id', 'following_id')
+            ->withTimestamps();
+    }
+
+    public function followers(): BelongsToMany
+    {
+        return $this->belongsToMany(__CLASS__, 'follows', 'following_id', 'follower_id')
+            ->withTimestamps();
+    }
+
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class, 'user_id');
+    }
 }

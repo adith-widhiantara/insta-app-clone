@@ -3,8 +3,9 @@
 namespace App\Services;
 
 use App\Models\Post;
-use Illuminate\Database\Eloquent\Collection;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Laravolt\Crud\Contracts\StoreRequestContract;
@@ -22,10 +23,34 @@ class PostService extends Service
         return $data;
     }
 
-    public function myPost(): Collection|array
+    public function myPost(): LengthAwarePaginator
     {
-        return Post::query()
+        $data = Post::query()
             ->where('user_id', Auth::id())
             ->get();
+
+        return new LengthAwarePaginator($data, $data->count(), $data->count(), 1);
+    }
+
+    public function appendQuery($query)
+    {
+        $query = parent::appendQuery($query);
+
+        $userId = Auth::id();
+
+        /** @var User $user */
+        $user = User::find($userId);
+
+        $user->load(['following']);
+
+        $followedUserIds = $user->following()->pluck('following_id');
+
+        $followedUserIds->push($userId);
+
+        $query
+            ->whereIn('user_id', $followedUserIds->toArray())
+            ->with(['user']);
+
+        return $query;
     }
 }

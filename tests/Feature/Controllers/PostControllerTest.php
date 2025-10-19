@@ -2,7 +2,9 @@
 
 namespace Tests\Feature\Controllers;
 
+use App\Models\Follow;
 use App\Models\Post;
+use Database\Factories\FollowFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -92,16 +94,85 @@ class PostControllerTest extends TestCase
                 'status',
                 'message',
                 'data' => [
-                    '*' => [
-                        'user_id',
-                        'image_url',
-                        'caption',
+                    'content' => [
+                        '*' => [
+                            'user_id',
+                            'image_url',
+                            'caption',
+                        ],
                     ],
                 ],
             ]);
 
-        $this->assertCount(5, $response->json('data'));
+        $this->assertCount(5, $response->json('data.content'));
 
         $this->assertDatabaseCount((new Post)->getTable(), 10);
+    }
+
+    public function test_feed_endpoint_returns_posts_based_on_following_logic(): void
+    {
+        Post::query()
+            ->delete();
+
+        $user = $this->createUser();
+        $userB = $this->createUser();
+        $userC = $this->createUser();
+
+        $token = $user->createToken('test')->plainTextToken;
+
+        FollowFactory::new()
+            ->relationship($user->id, $userB->id)
+            ->create();
+
+        Follow::factory()
+            ->create();
+
+        Post::factory()
+            ->count(5)
+            ->create();
+
+        Post::factory()
+            ->count(5)
+            ->create([
+                'user_id' => $user->id,
+            ]);
+
+        Post::factory()
+            ->count(3)
+            ->create([
+                'user_id' => $userB->id,
+            ]);
+
+        Post::factory()
+            ->count(3)
+            ->create([
+                'user_id' => $userC->id,
+            ]);
+
+        $response = $this
+            ->withHeaders([
+                'Authorization' => 'Bearer '.$token,
+            ])
+            ->getJson('api/post');
+
+        $response
+            ->assertStatus(Response::HTTP_OK)
+            ->assertJsonStructure([
+                'status',
+                'message',
+                'data' => [
+                    'content' => [
+                        '*' => [
+                            'user_id',
+                            'image_url',
+                            'caption',
+                        ],
+                    ],
+                ],
+            ]);
+
+        $this->assertCount(8, $response->json('data.content'));
+
+        $this->assertDatabaseCount((new Post)->getTable(), 16);
     }
 }
