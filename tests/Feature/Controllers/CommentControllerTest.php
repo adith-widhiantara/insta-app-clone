@@ -102,4 +102,41 @@ class CommentControllerTest extends TestCase
         $response
             ->assertStatus(Response::HTTP_UNAUTHORIZED);
     }
+
+    public function test_delete_comment_succeeds_if_comment_owner_is_authenticated_user(): void
+    {
+        $user = $this->createUser();
+
+        $token = $user->createToken('test')->plainTextToken;
+
+        $post = Post::factory()
+            ->create([
+                'user_id' => $user->id,
+            ]);
+
+        $text = fake()->text();
+
+        $comment = Comment::factory()
+            ->create([
+                'user_id' => $user->id,
+                'post_id' => $post->id,
+                'content' => $text,
+            ]);
+
+        $response = $this
+            ->withHeaders([
+                'Authorization' => 'Bearer '.$token,
+            ])
+            ->deleteJson('api/comment/'.$comment->id);
+
+        $response
+            ->assertStatus(Response::HTTP_OK)
+            ->assertJsonStructure([
+                'data',
+            ]);
+
+        $this->assertDatabaseMissing((new Comment)->getTable(), [
+            'id' => $comment->id,
+        ]);
+    }
 }
